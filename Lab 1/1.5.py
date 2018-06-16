@@ -33,15 +33,9 @@ class GeneralStaf (Person):
     def is_student (self):
         return False
 
-class Librarian (Person):
 
-    def __init__(self, name,family,date_birth, id,shift):
-        Person.__init__(self,name,family,date_birth,id)
-        self.shift = shift
-    def is_student (self):
-        return False
 
-class Books(Librarian):
+class Books():
 
     book_count = 0 # to count the number of books the library has
     __in_library = True # private variable to check whether the book is in library store or issued
@@ -87,12 +81,13 @@ class Books(Librarian):
             print ("  Is issued to: {} on {}".format (self.issued_to,self.date))
 
 
+class Librarian (Person, Books):
 
-
-
-
-
-
+    def __init__(self, name,family,date_birth, id,shift):
+        Person.__init__(self,name,family,date_birth,id)
+        self.shift = shift
+    def is_student (self):
+        return False
 
 
 
