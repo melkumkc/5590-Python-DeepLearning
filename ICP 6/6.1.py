@@ -1,6 +1,8 @@
 from sklearn import datasets
 from sklearn.naive_bayes import MultinomialNB # importing class from naive bayes model
 from sklearn.cross_validation import cross_val_score
+from sklearn.cross_validation import train_test_split
+from sklearn import datasets, metrics
 
 
 iris = datasets.load_iris() # importing iris data set
@@ -21,3 +23,19 @@ print ("The accuracy of each itteration is: {}".format (scores))
 print ("The mean accuracy is : {} %".format (a))
 
 
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+y_pred = model.predict(X_test)
+print ("Using another model of training size 80%: ")
+print(metrics.accuracy_score(y_test, y_pred))
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+y_pred = model.predict(X_test)
+print ("Using another model of training size 70%: ")
+print(metrics.accuracy_score(y_test, y_pred))
+
+""" 
+Remark: Using cross_val_score gives a better prediction because the accuracy of the prediciton is more accurate than the the train_test_split method, since it divides
+the data into diffrent folds and uses diffrent train and test folds to come up with model accuracy prdiction. while the train_test_split method the result of the prediction
+depends on the random samples chosen to do the training and testing this will result in less accurate prediction
+"""
