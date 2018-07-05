@@ -102,6 +102,9 @@ y_s = w_s +  x_test*w_a + bi # smokers regression model
 y_n = w_n_s + x_test*w_n_s + bi1 # none smokers regression model
 y = w_s +  x_test*w_a + bi + w_n_s + x_test*w_n_s + bi1
 
+from mpl_toolkits.mplot3d import axes3d
+fig = plt.figure()
+ax = fig.add_subplot (111,projection = "3d")
 plt.plot (data [:,1],data[:,3], ".")
 plt.plot (x_test,y_s,"b")
 plt.plot (x_test,y_n,"r")
